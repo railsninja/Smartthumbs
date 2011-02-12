@@ -38,12 +38,5 @@ class ThController < ApplicationController
       send_file(@obj.thumb_path_for(@format), :type => 'image/jpeg', :disposition => 'inline')
     end
   end
-
-  def custom
-    ci = CustomImage.find_by_artikel_obj_id_and_obj_id_and_layout_id(params[:id].split("_").first, params[:id].split("_").last, params[:layout])
-
-    ci.create_thumb
-    send_file(ci.dest_filename, :type => 'image/jpeg', :disposition => 'inline')
-  end
   
 end
