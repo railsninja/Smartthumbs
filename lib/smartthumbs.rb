@@ -55,11 +55,11 @@ module Smartthumbs
     # Creates the thumb for a certain @format
     def create_thumb_for(format)
       @format = format
-      return if st_format(@format).blank? || st_format(@format).length < 2
+      return if st_format(@format).blank?
       
       create_directory
       
-      method = st_format(@format)[1]
+      method = st_format(@format)[1] || :cut
       @x, @y = st_format(@format).first.split("x").map(&:to_i)
 
       if self.respond_to?(method)
