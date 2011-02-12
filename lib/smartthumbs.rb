@@ -95,12 +95,12 @@ module Smartthumbs
 
     # returns the cache-path for a certain image
     def thumb_path_for(format)
-      "#{Rails.root}#{thumb_url_for(format)}"
+      "#{Rails.root}/public#{thumb_url_for(format)}"
     end
 
     # return the http url to the resized image
     def thumb_url_for(format)
-      "/public/th/#{self.class.to_s.parameterize}/#{format.to_s}/#{self.id}.#{st_extension}"
+      "/th/#{self.class.to_s.parameterize}/#{format.to_s}/#{self.id}.#{st_extension}"
     end
 
     # resizes the image in a manner that both edges fit the needs.
