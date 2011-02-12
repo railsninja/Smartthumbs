@@ -83,7 +83,7 @@ module Smartthumbs
 
     # return the http url to the resized image
     def thumb_url_for(format)
-      "/th/#{self.class.to_s.parameterize}/#{format.to_s}/#{self.id}.#{st_extension}"
+      "/th/#{self.class.to_s.underscore.parameterize}/#{format.to_s}/#{self.id}.#{st_extension}"
     end
 
     # resizes the image in a manner that both edges fit the needs.

@@ -15,6 +15,7 @@ module Smartthumbs
     end  
   end
   
+  require "smartthumbs/thumbable"
   ::ActiveRecord::Base.send(:include, Smartthumbs::ActiceRecord)
  
 end

@@ -3,8 +3,8 @@ class ThController < ApplicationController
   require 'RMagick'
   include Magick
   
-  def index
-    render :text => "foo" and return
+  def deliver_crop
+    render :text => params.inspect and return
     begin
       @obj = Obj.find(params[:id])
     rescue ActiveRecord::RecordNotFound
