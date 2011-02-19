@@ -82,6 +82,8 @@ module Smartthumbs
     end
 
     # return the http url to the resized image
+    # this one has to be route from which the image is
+    # availabe - otherwise the caching benefit is gone 
     def thumb_url_for(format)
       "/th/#{self.class.to_s.underscore.parameterize}/#{format.to_s}/#{self.id}.#{st_extension}"
     end

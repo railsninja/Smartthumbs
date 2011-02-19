@@ -1,6 +1,6 @@
-module SmartthumbHelper
+module SmartthumbsHelper
   
-  def thumb_tag(record, foramt, opts={})
+  def thumb_tag(record, format, opts={})
     image_tag record.thumb_url_for(format), opts
   end
     
