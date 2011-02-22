@@ -39,8 +39,10 @@ By default smartthumbs generates urls like "/th/<klass-name>/<format>/<record-id
 	  end
 	end  
 
+
+
 	class Image < ActiveRecord::Base  
-	  smartthumbs :blob => :db_blob_column_, :extension => :my_extension, :formats => {
+	  smartthumbs :blob => :db_blob_column, :extension => :my_extension, :formats => {
 	   "thumb" => ["800x100", :fit, :e]
 	  }
     
@@ -50,7 +52,12 @@ By default smartthumbs generates urls like "/th/<klass-name>/<format>/<record-id
 	end
 
 ### In your View
-  <%= thumb_tag, @image, "tiny", :class => "red-border" %>
+
+    <%= thumb_tag, @image, "tiny", :class => "red-border" %>
+
+will generate something like:
+
+    <img src="/th/my_image/tiny/5.jpg" class="red-border"/>
 
 
 Copyright (c) 2011 Alexander Pauly, released under the MIT license
