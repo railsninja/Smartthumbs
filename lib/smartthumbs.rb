@@ -22,6 +22,11 @@ module Smartthumbs
         self.options ||= {}
         yield self.options
       end
+      
+      def get_option(key)
+        self.options ||= {}
+        self.options[key]
+      end
     end
   end
   

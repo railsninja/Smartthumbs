@@ -16,15 +16,24 @@ private
   def parse_params
     parsed = params[:path].split(".")[0..-2].first.split("/")
     
-    if parsed.length < 3 &&  Smartthumbs::Config.options[:assume_klass].present?
+    if parsed.length < 3 &&  Smartthumbs::Config.get_option(:assume_klass).present?
       parsed.unshift(
-        Smartthumbs::Config.options[:assume_klass]
+        Smartthumbs::Config.get_option(:assume_klass)
       )
     else
       parsed[0] = parsed.first.gsub("-", "/").classify  
     end
     
-    unless Smartthumbs::Config.options[:valid_classes].include?(parsed[0])
+    if Smartthumbs::Config.get_option(:valid_classes).blank?
+      msg = <<-INIT_DOC
+        Smartthumbs::Config.run do |config|
+          config[:valid_classes] = ["Image"]
+        end
+      INIT_DOC
+      raise "You need to define all valid_classes inside of an initializer script:\n\n#{msg}"  
+    end
+    
+    unless Smartthumbs::Config.get_option(:valid_classes).include?(parsed[0])
       raise "Bad Request"
     else
       parsed[0] = parsed.first.constantize

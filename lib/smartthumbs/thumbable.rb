@@ -90,7 +90,7 @@ module Smartthumbs
     # this one has to be route from which the image is
     # availabe - otherwise the caching benefit is gone 
     def thumb_url_for(format)
-      if Smartthumbs::Config.options[:assume_klass] == self.class.to_s
+      if Smartthumbs::Config.get_option(:assume_klass).to_s == self.class.to_s
         "/th/#{format.to_s}/#{self.id}.#{st_extension}"
       else
         "/th/#{self.class.to_s.underscore.parameterize}/#{format.to_s}/#{self.id}.#{st_extension}"
