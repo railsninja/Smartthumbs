@@ -21,11 +21,11 @@ and run
 
 Afterwards you should create an initializer-script in config/initializers:
 
-		Smartthumbs::Config.run do |config|
+    Smartthumbs::Config.run do |config|
       config[:valid_classes] = ["Image"]
       
       config[:assume_klass] = "Image" # optional
-		end
+    end
 
 Smartthumbs needs to know all classes that you want to use smartthumbs with.
 Pass them as an array of strings via :valid_classes .
