@@ -12,11 +12,11 @@ This Gem helps you create any kind of thumbnails on-the-fly.
 ## Install
 Add the Gem and then create an initializer-script in config/initializers:
 
-Smartthumbs::Config.run do |config|
-	config[:valid_classes] = ["Image"]
-# optional
-  config[:assume_klass] = "Image"
-end
+		Smartthumbs::Config.run do |config|
+			config[:valid_classes] = ["Image"]
+		# optional
+		  config[:assume_klass] = "Image"
+		end
 
 Smartthumbs needs to know all classes that you want to use smartthumbs with.
 Pass them as an array of strings via :valid_classes .
