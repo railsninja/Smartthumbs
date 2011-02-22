@@ -27,30 +27,30 @@ By default smartthumbs generates urls like "/th/<klass-name>/<format>/<record-id
 ## Examples
 
 ### In your models
-class Image < ActiveRecord::Base
-	smartthumbs :file => :file_path, :extension => "jpg", :formats => {
-	  "thumb" => ["800x200", :cut, :w],
-		"small" => ["100x100", :fit],
-		"tiny" => ["15x15", :fill]
-	}
+	class Image < ActiveRecord::Base
+		smartthumbs :file => :file_path, :extension => "jpg", :formats => {
+		  "thumb" => ["800x200", :cut, :w],
+			"small" => ["100x100", :fit],
+			"tiny" => ["15x15", :fill]
+		}
 
-  def file_path
-    "#{Rails.root}/tmp/uploads/#{self.id}.jpg"
-  end
-end  
+	  def file_path
+	    "#{Rails.root}/tmp/uploads/#{self.id}.jpg"
+	  end
+	end  
 
-class Image < ActiveRecord::Base  
-  smartthumbs :blob => :db_blob_column_, :extension => :my_extension, :formats => {
-   "thumb" => ["800x100", :fit, :e]
-  }
+	class Image < ActiveRecord::Base  
+	  smartthumbs :blob => :db_blob_column_, :extension => :my_extension, :formats => {
+	   "thumb" => ["800x100", :fit, :e]
+	  }
     
-  def my_extension
-    "jpg"
-  end
-end
+	  def my_extension
+	    "jpg"
+	  end
+	end
 
 ### In your View
-<%= thumb_tag, @image, "tiny", :class => "red-border" %>
+  <%= thumb_tag, @image, "tiny", :class => "red-border" %>
 
 
 Copyright (c) 2011 Alexander Pauly, released under the MIT license
