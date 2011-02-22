@@ -15,6 +15,16 @@ module Smartthumbs
     end  
   end
   
+  class Config
+    class << self
+      attr_accessor :options
+      def run
+        self.options ||= {}
+        yield self.options
+      end
+    end
+  end
+  
   require "smartthumbs/thumbable"
   ::ActiveRecord::Base.send(:include, Smartthumbs::ActiceRecord)
  

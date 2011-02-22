@@ -7,7 +7,7 @@ require 'action_controller'
 module Smartthumbs
   class Engine < Rails::Engine
     config.to_prepare do
-      ApplicationController.helper(SmartthumbHelper)
+      ApplicationController.helper("Smartthumbs")
     end
   end
 end

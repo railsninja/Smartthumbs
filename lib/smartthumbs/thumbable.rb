@@ -26,7 +26,12 @@ module Smartthumbs
     
     # returns the file extension for the current image
     def st_extension
-      "jpg"
+      return "jpg" unless self.class.st_config[:extension].present?
+      if self.class.st_config[:extension].is_a?(String)
+        self.class.st_config[:extension]
+      else
+        self.send(self.class.st_config[:extension])
+      end
     end
 
     # creates the directory for a certain @format if it doesn't exist
@@ -85,7 +90,11 @@ module Smartthumbs
     # this one has to be route from which the image is
     # availabe - otherwise the caching benefit is gone 
     def thumb_url_for(format)
-      "/th/#{self.class.to_s.underscore.parameterize}/#{format.to_s}/#{self.id}.#{st_extension}"
+      if Smartthumbs::Config.options[:assume_klass] == self.class.to_s
+        "/th/#{format.to_s}/#{self.id}.#{st_extension}"
+      else
+        "/th/#{self.class.to_s.underscore.parameterize}/#{format.to_s}/#{self.id}.#{st_extension}"
+      end
     end
 
     # resizes the image in a manner that both edges fit the needs.
