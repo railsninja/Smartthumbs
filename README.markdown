@@ -9,6 +9,21 @@ This Gem helps you create any kind of thumbnails on-the-fly.
 * can be implemented in several models
 * define which strategy should be used to resize your images
 
+## Install
+Add the Gem and then create an initializer-script in config/initializers:
+
+Smartthumbs::Config.run do |config|
+	config[:valid_classes] = ["Image"]
+# optional
+  config[:assume_klass] = "Image"
+end
+
+Smartthumbs needs to know all classes that you want to use smartthumbs with.
+Pass them as an array of strings via :valid_classes .
+
+By default smartthumbs generates urls like "/th/<klass-name>/<format>/<record-id>.<extension>". If you only have a single class you can set the default-class and prevent this class name from appering in that url. 
+
+
 ## Examples
 
 ### In your models
