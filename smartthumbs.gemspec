@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Alexander Pauly"]
   s.email       = ["railsninja@gmx.net"]
-  s.homepage    = "http://rubygems.org/gems/smartthumbs"
+  s.homepage    = "https://github.com/railsninja/Smartthumbs"
   s.summary     = %q{Smart on-the-fly thumbnail creation for blob or filesystem based images}
   s.description = %q{Smartthumbs let's you define several different formats. By default, every image is available in any format. Once a thumb is requested, it will be generated on the fly and then be saved to the public directory. The next user who accesses the image will get the static image from disk.'}
 
