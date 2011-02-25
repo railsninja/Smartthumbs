@@ -30,7 +30,7 @@ Afterwards you should create an initializer-script in config/initializers:
 Smartthumbs needs to know all classes that you want to use smartthumbs with.
 Pass them as an array of strings via :valid_classes .
 
-By default smartthumbs generates urls like "/th/klass-name/format/record-id.extension". If you only have a single class you can set the default-class and prevent this class name from appering in that url. 
+By default smartthumbs generates urls like "/th/klass-name/format/record-id.extension". If you only have a single class, you can set the default-class and prevent this class name from appearing in that url. 
 
 That's it, you're ready to use smartthumbs.
 
