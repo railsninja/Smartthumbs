@@ -19,9 +19,16 @@ module Smartthumbs
       end
     end
 
-    # returns all possible @formats for the current image 
+    # returns the specific format-array for the key f
+    # e.g. ["100x200", :cut]
+    # The config value for formats can be a hash or sth that responds to +call+
+    # e.g. a lambda. 
     def st_format(f)
-      self.class.st_config[:formats][f]
+      if self.class.st_config[:formats].respond_to?(:call)
+        self.class.st_config[:formats].call(f.to_sym)
+      else
+        self.class.st_config[:formats][f]
+      end
     end
     
     # returns the file extension for the current image
@@ -62,8 +69,7 @@ module Smartthumbs
     # returns the gravity for the current resizing process and
     # provides some shrotcuts
     def gravity
-      return Magick::CenterGravity unless (st_format(@format) || []).length >= 3
-      {
+      @gravity ||= {
         :new => Magick::NorthWestGravity,
         :n =>   Magick::NorthGravity,
         :ne =>  Magick::NorthEastGravity,
@@ -74,6 +80,8 @@ module Smartthumbs
         :s =>   Magick::SouthGravity,
         :se =>  Magick::SouthEastGravity
       }[st_format(@format).last]
+      
+      @gravity ||= Magick::CenterGravity
     end
 
     # Does a thumb already exist?
