@@ -61,6 +61,23 @@ That's it, you're ready to use smartthumbs.
 	  end
 	end
 
+
+Since version 0.0.4 it's possible to pass a lambda function as :formats. That makes it possible to store the formats inside of a model:
+
+	class ThumbFormat < ActiveRecord::Base
+  	def config
+    	["#{width}x#{height}", method.to_sym, orientation.try(:to_sym)]
+  	end
+	end
+  
+	class Image < ActiveRecord::Base
+	  smartthumbs :file => :file, :extension => "jpg", :formats => lambda{|format|
+	    ThumbFormat.find_by_name(format).try(:config)
+	  }
+	end
+
+
+
 ### In your View
 
     <%= thumb_tag, @image, "tiny", :class => "red-border" %>
