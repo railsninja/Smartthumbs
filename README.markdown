@@ -65,9 +65,9 @@ That's it, you're ready to use smartthumbs.
 Since version 0.0.4 it's possible to pass a lambda function as :formats. That makes it possible to store the formats inside of a model:
 
 	class ThumbFormat < ActiveRecord::Base
-  	def config
-    	["#{width}x#{height}", method.to_sym, orientation.try(:to_sym)]
-  	end
+	  def config
+	  	["#{width}x#{height}", method.to_sym, orientation.try(:to_sym)]
+	  end
 	end
   
 	class Image < ActiveRecord::Base
