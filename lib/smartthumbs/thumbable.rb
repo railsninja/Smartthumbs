@@ -17,6 +17,12 @@ module Smartthumbs
       else
         raise "No thumb source defined. You have to define neither :blob or :file"
       end
+      
+      if self.class.st_config[:before_resize].present? && self.respond_to?(self.class.st_config[:before_resize].to_sym)
+        self.send(self.class.st_config[:before_resize].to_sym)
+      end
+      @rmagick_img
+      
     end
 
     # returns the specific format-array for the key f
