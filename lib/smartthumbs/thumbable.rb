@@ -33,7 +33,11 @@ module Smartthumbs
       if self.class.st_config[:formats].respond_to?(:call)
         self.class.st_config[:formats].call(f.to_sym)
       else
-        self.class.st_config[:formats][f]
+        if self.class.st_config[:formats][f].is_a?(Hash)
+          self.send(self.class.st_config[:formats][f])
+        else
+          self.class.st_config[:formats][f]
+        end
       end
     end
     
