@@ -1,8 +1,5 @@
 class ThumbsController < ApplicationController
   
-  require 'RMagick'
-  include Magick
-
   def deliver_crop
     klass, format, id = parse_params
     
