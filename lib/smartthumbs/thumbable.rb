@@ -4,6 +4,7 @@ module Smartthumbs
 
     # return the rmagick instance
     def rmagick_img
+      return @rmagick_img unless @rmagick_img.blank?
       if self.class.st_config[:blob].present?
         @rmagick_img ||= Magick::ImageList.new.from_blob(
           self.send(self.class.st_config[:blob])
