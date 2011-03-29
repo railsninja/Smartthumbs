@@ -1,7 +1,9 @@
 module Smartthumbs
 
   module Thumbable
-
+    require 'RMagick'
+    include Magick
+    
     # return the rmagick instance
     def rmagick_img
       return @rmagick_img unless @rmagick_img.blank?
