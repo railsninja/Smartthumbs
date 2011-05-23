@@ -73,7 +73,10 @@ module Smartthumbs
       end
       
       rounding_error
-      rmagick_img.write(thumb_path_for(@format)) { self.quality = 80 }
+      
+      quality = self.class.st_config[:quality]
+      quality ||= 80
+      rmagick_img.write(thumb_path_for(@format)) { self.quality = quality }
       
       if self.class.st_config[:after_resize].present? && self.respond_to?(self.class.st_config[:after_resize].to_sym)
         self.send(self.class.st_config[:after_resize].to_sym, thumb_path_for(@format))
